@@ -1999,6 +1999,26 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 17:
+/*!***************************************************************!*\
+  !*** D:/work_code/simplicity-letter2/api/SimplicityLetter.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getList = getList;var db = wx.cloud.database();
+var SimplicityLetter = db.collection("simplicity-letter");
+
+function getList() {
+  console.log('进入了查询列表');
+  return SimplicityLetter.where({
+    status: "1" }).
+  get();
+}
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -8047,10 +8067,10 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 29:
-/*!************************************************************!*\
-  !*** D:/work_code/Simplicity-Letter/common/html-parser.js ***!
-  \************************************************************/
+/***/ 25:
+/*!*************************************************************!*\
+  !*** D:/work_code/simplicity-letter2/common/html-parser.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8385,30 +8405,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 30:
-/*!**************************************************************!*\
-  !*** D:/work_code/Simplicity-Letter/api/SimplicityLetter.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getList = getList;var db = wx.cloud.database();
-var SimplicityLetter = db.collection("simplicity-letter");
-
-function getList() {
-  console.log('进入了查询列表');
-  return SimplicityLetter.where({
-    status: "1" }).
-  get();
-}
-
-/***/ }),
-
 /***/ 4:
-/*!*************************************************!*\
-  !*** D:/work_code/Simplicity-Letter/pages.json ***!
-  \*************************************************/
+/*!**************************************************!*\
+  !*** D:/work_code/simplicity-letter2/pages.json ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

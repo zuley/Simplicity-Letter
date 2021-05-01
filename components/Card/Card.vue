@@ -6,6 +6,16 @@
 			<rich-text class="format" :nodes="htmlNode"></rich-text>
 		</view>
 		<view class="date">{{ date }}</view>
+		<view class="tools">
+			<!-- 点赞 -->
+			<view class="iconfont">&#xe872;</view>
+			<view class="iconfont">&#xe871;</view>
+			<!-- 喜欢 -->
+			<view class="iconfont">&#xe870;</view>
+			<view class="iconfont">&#xe86f;</view>
+			<!-- 分享 -->
+			<view class="iconfont">&#xe6eb;</view>
+		</view>
 	</view>
 </template>
 
@@ -55,6 +65,18 @@
 		position: absolute;
 		bottom: 30rpx;
 		left: 40rpx;
+	}
+	.tools {
+		position: absolute;
+		right: 40rpx;
+		bottom: 30rpx;
+		.iconfont {
+			font-family: iconfont;
+			font-size: 50rpx;
+			color: #999;
+			float: left;
+			margin-left: 10rpx;
+		}
 	}
 }
 </style>

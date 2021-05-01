@@ -50,4 +50,16 @@
   bottom: 30rpx;
   left: 40rpx;
 }
+.m-card .tools {
+  position: absolute;
+  right: 40rpx;
+  bottom: 30rpx;
+}
+.m-card .tools .iconfont {
+  font-family: iconfont;
+  font-size: 50rpx;
+  color: #999;
+  float: left;
+  margin-left: 10rpx;
+}
 
