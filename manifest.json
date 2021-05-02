@@ -53,9 +53,11 @@
         "appid" : "wx4c942a369834d965",
         "setting" : {
             "urlCheck" : false,
-            "minified" : true
+            "minified" : true,
+            "es6" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "cloudfunctionRoot" : "static/functions/"
     },
     "mp-alipay" : {
         "usingComponents" : true

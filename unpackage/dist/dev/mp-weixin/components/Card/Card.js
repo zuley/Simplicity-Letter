@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 31));
 
 
 
@@ -136,28 +136,73 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _htmlParser = _interopRequireDefault(__webpack_require__(/*! ../../common/html-parser.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { name: "Card", props: { pic: String, content: String, date: String }, data: function data() {return {};}, computed: { htmlNode: function htmlNode() {return (0, _htmlParser.default)(this.content);} } };exports.default = _default;
+var _htmlParser = _interopRequireDefault(__webpack_require__(/*! ../../common/html-parser.js */ 25));
+var _SimplicityLetter = __webpack_require__(/*! ../../api/SimplicityLetter.js */ 17);
+var _wx = __webpack_require__(/*! ../../api/wx.js */ 34);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+{
+  name: "Card",
+  props: {
+    pic: String,
+    content: String,
+    date: String,
+    letter: String },
+
+  data: function data() {
+    return {
+      userInfo: null,
+      openId: null,
+      zanStatus: false };
+
+  },
+  computed: {
+    htmlNode: function htmlNode() {
+      return (0, _htmlParser.default)(this.content);
+    } },
+
+  created: function created() {
+    this.getZanList();
+    this.getZanStatus();
+  },
+  methods: {
+    handleZan: function handleZan() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.initData());case 2:
+                (0, _SimplicityLetter.setZan)(_this.letter, _this.userInfo.avatarUrl, _this.userInfo.nickName, _this.openId).then(function (res) {
+                  console.log('点赞成功');
+                });case 3:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    handleCancelZan: function handleCancelZan() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.initData());case 2:
+                (0, _SimplicityLetter.cancelZan)(_this2.openId, _this2.letter).then(function (res) {
+                  console.log('res', res);
+                });case 3:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    handleStar: function handleStar() {
+      console.log("收藏");
+    },
+    handleCancelStar: function handleCancelStar() {
+      console.log("取消收藏");
+    },
+    handleShare: function handleShare() {
+      console.log("分享");
+    },
+    // 初始化数据
+    initData: function initData() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:if (!(
+                _this3.openId && _this3.userInfo)) {_context3.next = 2;break;}return _context3.abrupt("return");case 2:_context3.next = 4;return (
+                  (0, _wx.getOpenId)());case 4:_this3.openId = _context3.sent;_context3.next = 7;return (
+                  (0, _wx.getUserInfo)());case 7:_this3.userInfo = _context3.sent;case 8:case "end":return _context3.stop();}}}, _callee3);}))();
+    },
+    // 获取赞列表
+    getZanList: function getZanList() {
+      (0, _SimplicityLetter.getZanList)(this.letter).then(function (res) {
+        console.log(res);
+      });
+    },
+    getZanStatus: function getZanStatus() {var _this4 = this;
+      (0, _SimplicityLetter.getZanStatus)(this.openId, this.letter).then(function (res) {
+        console.log(res);
+        _this4.zanStatus = res;
+      });
+    } } };exports.default = _default;
 
 /***/ }),
 

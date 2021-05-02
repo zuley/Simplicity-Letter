@@ -8,6 +8,7 @@
 					:pic="item.cover"
 					:content="item.content"
 					:date="item.date"
+					:letter="item._id"
 				/>
 			</swiper-item>
 		</swiper>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-	import { getList } from "../../api/SimplicityLetter.js"
+	import { getLetterList } from "../../api/SimplicityLetter.js"
 	export default {
 		data() {
 			return {
@@ -27,7 +28,7 @@
 		},
 		methods: {
 			loadLists () {
-				getList().then(res => {
+				getLetterList().then(res => {
 					this.list.push(...res.data)
 				})
 			}
