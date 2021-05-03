@@ -8,20 +8,20 @@
 		<view class="date">{{ date }}</view>
 		<view class="tools">
 			<!-- 点赞 -->
-			<view v-if="!zanStatus" class="iconfont" @click="handleZan">&#xe872;</view>
-			<view v-else class="iconfont" @click="handleCancelZan">&#xe871;</view>
+			<view v-if="!zanStatus" class="iconfont" @tap="handleZan">&#xe872;</view>
+			<view v-else class="iconfont" @tap="handleCancelZan">&#xe871;</view>
 			<!-- 喜欢 -->
-			<view class="iconfont" @click="handleStar">&#xe870;</view>
-			<view class="iconfont" @click="handleCancelStar">&#xe86f;</view>
+			<view v-if="!starStatus" class="iconfont" @tap="handleStar">&#xe870;</view>
+			<view v-else class="iconfont" @tap="handleCancelStar">&#xe86f;</view>
 			<!-- 分享 -->
-			<view class="iconfont" @click="handleShare">&#xe6eb;</view>
+			<view class="iconfont" @tap="handleShare">&#xe6eb;</view>
 		</view>
 	</view>
 </template>
 
 <script>
 	import htmlParser from "../../common/html-parser.js"
-	import { setZan, getZanList, getZanStatus, cancelZan } from "../../api/SimplicityLetter.js"
+	import { setZan, getZanList, getZanStatus, cancelZan, setStar, getStarStatus, cancelStar } from "../../api/SimplicityLetter.js"
 	import { getOpenId, getUserInfo } from "../../api/wx.js"
 	export default {
 		name:"Card",
@@ -35,7 +35,8 @@
 			return {
 				userInfo: null,
 				openId: null,
-				zanStatus: false
+				zanStatus: false,
+				starStatus: false
 			};
 		},
 		computed: {
@@ -43,37 +44,24 @@
 				return htmlParser(this.content)
 			}
 		},
-		created () {
+		async created () {
+			if (!this.openId) this.openId = await getOpenId()
 			this.getZanList()
 			this.getZanStatus()
 		},
 		methods: {
 			async handleZan () {
 				await this.initData()
-				setZan(this.letter, this.userInfo.avatarUrl, this.userInfo.nickName, this.openId).then(res => {
-					console.log('点赞成功')
+				this.zanStatus = true
+				setZan(this.letter, this.userInfo.avatarUrl, this.userInfo.nickName, this.openId).catch(err => {
+					this.zanStatus = false
 				})
 			},
 			async handleCancelZan  () {
-				await this.initData()
-				cancelZan(this.openId, this.letter).then(res => {
-					console.log('res', res)
+				this.zanStatus = false
+				cancelZan(this.openId, this.letter).catch(err => {
+					this.zanStatus = true
 				})
-			},
-			handleStar () {
-				console.log("收藏")
-			},
-			handleCancelStar () {
-				console.log("取消收藏")
-			},
-			handleShare () {
-				console.log("分享")
-			},
-			// 初始化数据
-			async initData () {
-				if (this.openId && this.userInfo) return
-				this.openId = await getOpenId()
-				this.userInfo = await getUserInfo()
 			},
 			// 获取赞列表
 			getZanList () {
@@ -81,12 +69,41 @@
 					console.log(res)
 				})
 			},
-			getZanStatus () {
+			// 获取赞状态
+			async getZanStatus () {
 				getZanStatus(this.openId, this.letter).then(res => {
-					console.log(res)
 					this.zanStatus = res
 				})
-			}
+			},
+			// 点击收藏
+			async handleStar () {
+				await this.initData()
+				this.starStatus = true
+				setStar(this.letter, this.userInfo.nickName, this.openId).catch(err => {
+					this.starStatus = false
+				})
+			},
+			// 取消收藏
+			async handleCancelStar () {
+				this.starStatus = false
+				cancelStar(this.openId, this.letter).catch(err => {
+					this.starStatus = true
+				})
+			},
+			// 获取收藏状态
+			getStarStatus () {
+				getStarStatus(this.openId, this.letter).then(res => {
+					this.starStatus = true
+				})
+			},
+			handleShare () {
+				console.log("分享")
+			},
+			// 初始化数据
+			async initData () {
+				if (this.userInfo) return
+				this.userInfo = await getUserInfo()
+			},
 		}
 	}
 </script>

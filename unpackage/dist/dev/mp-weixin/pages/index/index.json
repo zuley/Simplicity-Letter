@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "uni-app",
+  "navigationBarTitleText": "三行情书",
   "usingComponents": {
     "card": "/components/Card/Card"
   }

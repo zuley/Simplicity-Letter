@@ -7,7 +7,7 @@ export async function getUserInfo () {
 			}
 		})
 	}
-	return JSON.parse(uni.getStorageSync('userInfo'))
+	return JSON.parse(uni.getStorageSync('userInfo') || "{}")
 }
 
 export async function getOpenId () {

@@ -822,7 +822,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7395,7 +7395,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7416,14 +7416,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7509,7 +7509,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7947,9 +7947,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!**************************************************!*\
-  !*** D:/work_code/simplicity-letter2/pages.json ***!
-  \**************************************************/
+/*!*********************************************************!*\
+  !*** /Users/zuley/zk-work/Simplicity-Letter/pages.json ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8096,16 +8096,17 @@ function normalizeComponent (
 /* 15 */,
 /* 16 */,
 /* 17 */
-/*!***************************************************************!*\
-  !*** D:/work_code/simplicity-letter2/api/SimplicityLetter.js ***!
-  \***************************************************************/
+/*!**********************************************************************!*\
+  !*** /Users/zuley/zk-work/Simplicity-Letter/api/SimplicityLetter.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 31));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var db = wx.cloud.database();
+Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;exports.getStarStatus = getStarStatus;exports.cancelStar = cancelStar;exports.setStar = setStar;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var db = wx.cloud.database();
 var SimplicityLetter = db.collection("simplicity-letter");
 var SimplicityLetterZan = db.collection("simplicity-letter-zan");
+var SimplicityLetterStar = db.collection("simplicity-letter-star");
 
 // 获取情书列表
 function getLetterList() {
@@ -8157,348 +8158,74 @@ getZanList(_x5) {return _getZanList.apply(this, arguments);}
                                                               * @param {Object} letter 情书 ID
                                                               */function _getZanList() {_getZanList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(letter) {var query, tatal, list;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0: // 取得查询
             query = SimplicityLetterZan.where({ letter: letter }); // 获取总数
-            _context2.next = 3;return query.count().then(function (res) {return res.total;});case 3:tatal = _context2.sent;_context2.next = 6;return query.get().then(function (res) {return res.data;});case 6:list = _context2.sent;return _context2.abrupt("return", { tatal: tatal, list: list });case 8:case "end":return _context2.stop();}}}, _callee2);}));return _getZanList.apply(this, arguments);}function getZanStatus(_x6, _x7) {return _getZanStatus.apply(this, arguments);}function _getZanStatus() {_getZanStatus = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(openId, letter) {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:return _context3.abrupt("return", SimplicityLetterZan.where({
-              _openid: openId,
-              letter: letter }).
-            count().then(function (res) {return res.total > 0;}));case 1:case "end":return _context3.stop();}}}, _callee3);}));return _getZanStatus.apply(this, arguments);}function
+            _context2.next = 3;return query.count().then(function (res) {return res.total;});case 3:tatal = _context2.sent;_context2.next = 6;return query.get().then(function (res) {return res.data;});case 6:list = _context2.sent;return _context2.abrupt("return", { tatal: tatal, list: list });case 8:case "end":return _context2.stop();}}}, _callee2);}));return _getZanList.apply(this, arguments);}function getZanStatus(_x6, _x7) {return _getZanStatus.apply(this, arguments);}
 
 
-cancelZan(_x8, _x9) {return _cancelZan.apply(this, arguments);}function _cancelZan() {_cancelZan = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(openId, letter) {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:return _context4.abrupt("return",
-            SimplicityLetterZan.where({
-              _openid: openId,
-              letter: letter }).
-            remove());case 1:case "end":return _context4.stop();}}}, _callee4);}));return _cancelZan.apply(this, arguments);}
+
+
+
+/**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              * 取消赞
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              * @param {Object} openId 用户标识
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              * @param {Object} letter 情书ID
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              */function _getZanStatus() {_getZanStatus = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(openId, letter) {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:return _context3.abrupt("return", SimplicityLetterZan.where({ _openid: openId, letter: letter }).count().then(function (res) {return res.total > 0;}));case 1:case "end":return _context3.stop();}}}, _callee3);}));return _getZanStatus.apply(this, arguments);}function
+cancelZan(_x8, _x9) {return _cancelZan.apply(this, arguments);}
+
+
+
+
+
+
+/**
+                                                                 * 获取喜欢状态
+                                                                 * @param {Object} openId 用户 openid
+                                                                 * @param {Object} letter 情书 ID
+                                                                 */function _cancelZan() {_cancelZan = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(openId, letter) {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:return _context4.abrupt("return", SimplicityLetterZan.where({ _openid: openId, letter: letter }).remove());case 1:case "end":return _context4.stop();}}}, _callee4);}));return _cancelZan.apply(this, arguments);}function
+getStarStatus(_x10, _x11) {return _getStarStatus.apply(this, arguments);}
+
+
+
+
+
+
+/**
+                                                                           * 取消喜欢
+                                                                           * @param {Object} openId 用户标识
+                                                                           * @param {Object} letter 情书ID
+                                                                           */function _getStarStatus() {_getStarStatus = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(openId, letter) {return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:return _context5.abrupt("return", SimplicityLetterStar.where({ _openid: openId, letter: letter }).count().then(function (res) {return res.total > 0;}));case 1:case "end":return _context5.stop();}}}, _callee5);}));return _getStarStatus.apply(this, arguments);}function
+cancelStar(_x12, _x13) {return _cancelStar.apply(this, arguments);}
+
+
+
+
+
+
+/**
+                                                                     * 设置喜欢
+                                                                     * @param {String} avatarUrl 用户头像地址
+                                                                     * @param {String} letter 情书ID
+                                                                     * @param {String} nickName 用户昵称
+                                                                     */function _cancelStar() {_cancelStar = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(openId, letter) {return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:return _context6.abrupt("return", SimplicityLetterStar.where({ _openid: openId, letter: letter }).remove());case 1:case "end":return _context6.stop();}}}, _callee6);}));return _cancelStar.apply(this, arguments);}function
+setStar(_x14, _x15, _x16) {return _setStar.apply(this, arguments);}function _setStar() {_setStar = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(letter, nickName, openId) {return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_context7.next = 2;return (
+              getStarStatus(openId, letter));case 2:if (!_context7.sent) {_context7.next = 4;break;}return _context7.abrupt("return", true);case 4:return _context7.abrupt("return",
+            SimplicityLetterStar.add({
+              data: {
+                letter: letter,
+                nickName: nickName,
+                _createTime: new Date().getTime() } }));case 5:case "end":return _context7.stop();}}}, _callee7);}));return _setStar.apply(this, arguments);}
 
 /***/ }),
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
-/*!*************************************************************!*\
-  !*** D:/work_code/simplicity-letter2/common/html-parser.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /*
-                                                                                                      * ----------------------------------------------------------------------------
-                                                                                                      * Usage
-                                                                                                      * ----------------------------------------------------------------------------
-                                                                                                      *
-                                                                                                      * // Use like so:
-                                                                                                      * HTMLParser(htmlString, {
-                                                                                                      *     start: function(tag, attrs, unary) {},
-                                                                                                      *     end: function(tag) {},
-                                                                                                      *     chars: function(text) {},
-                                                                                                      *     comment: function(text) {}
-                                                                                                      * });
-                                                                                                      *
-                                                                                                      * // or to get an XML string:
-                                                                                                      * HTMLtoXML(htmlString);
-                                                                                                      *
-                                                                                                      * // or to get an XML DOM Document
-                                                                                                      * HTMLtoDOM(htmlString);
-                                                                                                      *
-                                                                                                      * // or to inject into an existing document/DOM node
-                                                                                                      * HTMLtoDOM(htmlString, document);
-                                                                                                      * HTMLtoDOM(htmlString, document.body);
-                                                                                                      *
-                                                                                                      */
-// Regular Expressions for parsing tags and attributes
-var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
-var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
-var attr = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g; // Empty Elements - HTML 5
-
-var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr'); // Block Elements - HTML 5
-// fixed by xxx 将 ins 标签从块级名单中移除
-
-var block = makeMap('a,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
-
-var inline = makeMap('abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'); // Elements that you can, intentionally, leave open
-// (and which close themselves)
-
-var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr'); // Attributes that have their values filled in disabled="disabled"
-
-var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected'); // Special Elements (can contain anything)
-
-var special = makeMap('script,style');
-function HTMLParser(html, handler) {
-  var index;
-  var chars;
-  var match;
-  var stack = [];
-  var last = html;
-
-  stack.last = function () {
-    return this[this.length - 1];
-  };
-
-  while (html) {
-    chars = true; // Make sure we're not in a script or style element
-
-    if (!stack.last() || !special[stack.last()]) {
-      // Comment
-      if (html.indexOf('<!--') == 0) {
-        index = html.indexOf('-->');
-
-        if (index >= 0) {
-          if (handler.comment) {
-            handler.comment(html.substring(4, index));
-          }
-
-          html = html.substring(index + 3);
-          chars = false;
-        } // end tag
-
-      } else if (html.indexOf('</') == 0) {
-        match = html.match(endTag);
-
-        if (match) {
-          html = html.substring(match[0].length);
-          match[0].replace(endTag, parseEndTag);
-          chars = false;
-        } // start tag
-
-      } else if (html.indexOf('<') == 0) {
-        match = html.match(startTag);
-
-        if (match) {
-          html = html.substring(match[0].length);
-          match[0].replace(startTag, parseStartTag);
-          chars = false;
-        }
-      }
-
-      if (chars) {
-        index = html.indexOf('<');
-        var text = index < 0 ? html : html.substring(0, index);
-        html = index < 0 ? '' : html.substring(index);
-
-        if (handler.chars) {
-          handler.chars(text);
-        }
-      }
-    } else {
-      html = html.replace(new RegExp('([\\s\\S]*?)<\/' + stack.last() + '[^>]*>'), function (all, text) {
-        text = text.replace(/<!--([\s\S]*?)-->|<!\[CDATA\[([\s\S]*?)]]>/g, '$1$2');
-
-        if (handler.chars) {
-          handler.chars(text);
-        }
-
-        return '';
-      });
-      parseEndTag('', stack.last());
-    }
-
-    if (html == last) {
-      throw 'Parse Error: ' + html;
-    }
-
-    last = html;
-  } // Clean up any remaining tags
-
-
-  parseEndTag();
-
-  function parseStartTag(tag, tagName, rest, unary) {
-    tagName = tagName.toLowerCase();
-
-    if (block[tagName]) {
-      while (stack.last() && inline[stack.last()]) {
-        parseEndTag('', stack.last());
-      }
-    }
-
-    if (closeSelf[tagName] && stack.last() == tagName) {
-      parseEndTag('', tagName);
-    }
-
-    unary = empty[tagName] || !!unary;
-
-    if (!unary) {
-      stack.push(tagName);
-    }
-
-    if (handler.start) {
-      var attrs = [];
-      rest.replace(attr, function (match, name) {
-        var value = arguments[2] ? arguments[2] : arguments[3] ? arguments[3] : arguments[4] ? arguments[4] : fillAttrs[name] ? name : '';
-        attrs.push({
-          name: name,
-          value: value,
-          escaped: value.replace(/(^|[^\\])"/g, '$1\\\"') // "
-        });
-
-      });
-
-      if (handler.start) {
-        handler.start(tagName, attrs, unary);
-      }
-    }
-  }
-
-  function parseEndTag(tag, tagName) {
-    // If no tag name is provided, clean shop
-    if (!tagName) {
-      var pos = 0;
-    } // Find the closest opened tag of the same type
-    else {
-        for (var pos = stack.length - 1; pos >= 0; pos--) {
-          if (stack[pos] == tagName) {
-            break;
-          }
-        }
-      }
-
-    if (pos >= 0) {
-      // Close all the open elements, up the stack
-      for (var i = stack.length - 1; i >= pos; i--) {
-        if (handler.end) {
-          handler.end(stack[i]);
-        }
-      } // Remove the open elements from the stack
-
-
-      stack.length = pos;
-    }
-  }
-}
-
-function makeMap(str) {
-  var obj = {};
-  var items = str.split(',');
-
-  for (var i = 0; i < items.length; i++) {
-    obj[items[i]] = true;
-  }
-
-  return obj;
-}
-
-function removeDOCTYPE(html) {
-  return html.replace(/<\?xml.*\?>\n/, '').replace(/<!doctype.*>\n/, '').replace(/<!DOCTYPE.*>\n/, '');
-}
-
-function parseAttrs(attrs) {
-  return attrs.reduce(function (pre, attr) {
-    var value = attr.value;
-    var name = attr.name;
-
-    if (pre[name]) {
-      pre[name] = pre[name] + " " + value;
-    } else {
-      pre[name] = value;
-    }
-
-    return pre;
-  }, {});
-}
-
-function parseHtml(html) {
-  html = removeDOCTYPE(html);
-  var stacks = [];
-  var results = {
-    node: 'root',
-    children: [] };
-
-  HTMLParser(html, {
-    start: function start(tag, attrs, unary) {
-      var node = {
-        name: tag };
-
-
-      if (attrs.length !== 0) {
-        node.attrs = parseAttrs(attrs);
-      }
-
-      if (unary) {
-        var parent = stacks[0] || results;
-
-        if (!parent.children) {
-          parent.children = [];
-        }
-
-        parent.children.push(node);
-      } else {
-        stacks.unshift(node);
-      }
-    },
-    end: function end(tag) {
-      var node = stacks.shift();
-      if (node.name !== tag) console.error('invalid state: mismatch end tag');
-
-      if (stacks.length === 0) {
-        results.children.push(node);
-      } else {
-        var parent = stacks[0];
-
-        if (!parent.children) {
-          parent.children = [];
-        }
-
-        parent.children.push(node);
-      }
-    },
-    chars: function chars(text) {
-      var node = {
-        type: 'text',
-        text: text };
-
-
-      if (stacks.length === 0) {
-        results.children.push(node);
-      } else {
-        var parent = stacks[0];
-
-        if (!parent.children) {
-          parent.children = [];
-        }
-
-        parent.children.push(node);
-      }
-    },
-    comment: function comment(text) {
-      var node = {
-        node: 'comment',
-        text: text };
-
-      var parent = stacks[0];
-
-      if (!parent.children) {
-        parent.children = [];
-      }
-
-      parent.children.push(node);
-    } });
-
-  return results.children;
-}var _default =
-
-parseHtml;exports.default = _default;
-
-/***/ }),
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
+/* 18 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 32);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 19);
 
 /***/ }),
-/* 32 */
+/* 19 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -8529,7 +8256,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 33);
+module.exports = __webpack_require__(/*! ./runtime */ 20);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -8545,7 +8272,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 33 */
+/* 20 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9276,15 +9003,328 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 34 */
-/*!*************************************************!*\
-  !*** D:/work_code/simplicity-letter2/api/wx.js ***!
-  \*************************************************/
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
+/*!********************************************************************!*\
+  !*** /Users/zuley/zk-work/Simplicity-Letter/common/html-parser.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = getUserInfo;exports.getOpenId = getOpenId;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 31));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function getUserInfo() {return _getUserInfo.apply(this, arguments);}function _getUserInfo() {_getUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /*
+                                                                                                      * ----------------------------------------------------------------------------
+                                                                                                      * Usage
+                                                                                                      * ----------------------------------------------------------------------------
+                                                                                                      *
+                                                                                                      * // Use like so:
+                                                                                                      * HTMLParser(htmlString, {
+                                                                                                      *     start: function(tag, attrs, unary) {},
+                                                                                                      *     end: function(tag) {},
+                                                                                                      *     chars: function(text) {},
+                                                                                                      *     comment: function(text) {}
+                                                                                                      * });
+                                                                                                      *
+                                                                                                      * // or to get an XML string:
+                                                                                                      * HTMLtoXML(htmlString);
+                                                                                                      *
+                                                                                                      * // or to get an XML DOM Document
+                                                                                                      * HTMLtoDOM(htmlString);
+                                                                                                      *
+                                                                                                      * // or to inject into an existing document/DOM node
+                                                                                                      * HTMLtoDOM(htmlString, document);
+                                                                                                      * HTMLtoDOM(htmlString, document.body);
+                                                                                                      *
+                                                                                                      */
+// Regular Expressions for parsing tags and attributes
+var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
+var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
+var attr = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g; // Empty Elements - HTML 5
+
+var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr'); // Block Elements - HTML 5
+// fixed by xxx 将 ins 标签从块级名单中移除
+
+var block = makeMap('a,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
+
+var inline = makeMap('abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'); // Elements that you can, intentionally, leave open
+// (and which close themselves)
+
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr'); // Attributes that have their values filled in disabled="disabled"
+
+var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected'); // Special Elements (can contain anything)
+
+var special = makeMap('script,style');
+function HTMLParser(html, handler) {
+  var index;
+  var chars;
+  var match;
+  var stack = [];
+  var last = html;
+
+  stack.last = function () {
+    return this[this.length - 1];
+  };
+
+  while (html) {
+    chars = true; // Make sure we're not in a script or style element
+
+    if (!stack.last() || !special[stack.last()]) {
+      // Comment
+      if (html.indexOf('<!--') == 0) {
+        index = html.indexOf('-->');
+
+        if (index >= 0) {
+          if (handler.comment) {
+            handler.comment(html.substring(4, index));
+          }
+
+          html = html.substring(index + 3);
+          chars = false;
+        } // end tag
+
+      } else if (html.indexOf('</') == 0) {
+        match = html.match(endTag);
+
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(endTag, parseEndTag);
+          chars = false;
+        } // start tag
+
+      } else if (html.indexOf('<') == 0) {
+        match = html.match(startTag);
+
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(startTag, parseStartTag);
+          chars = false;
+        }
+      }
+
+      if (chars) {
+        index = html.indexOf('<');
+        var text = index < 0 ? html : html.substring(0, index);
+        html = index < 0 ? '' : html.substring(index);
+
+        if (handler.chars) {
+          handler.chars(text);
+        }
+      }
+    } else {
+      html = html.replace(new RegExp('([\\s\\S]*?)<\/' + stack.last() + '[^>]*>'), function (all, text) {
+        text = text.replace(/<!--([\s\S]*?)-->|<!\[CDATA\[([\s\S]*?)]]>/g, '$1$2');
+
+        if (handler.chars) {
+          handler.chars(text);
+        }
+
+        return '';
+      });
+      parseEndTag('', stack.last());
+    }
+
+    if (html == last) {
+      throw 'Parse Error: ' + html;
+    }
+
+    last = html;
+  } // Clean up any remaining tags
+
+
+  parseEndTag();
+
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = tagName.toLowerCase();
+
+    if (block[tagName]) {
+      while (stack.last() && inline[stack.last()]) {
+        parseEndTag('', stack.last());
+      }
+    }
+
+    if (closeSelf[tagName] && stack.last() == tagName) {
+      parseEndTag('', tagName);
+    }
+
+    unary = empty[tagName] || !!unary;
+
+    if (!unary) {
+      stack.push(tagName);
+    }
+
+    if (handler.start) {
+      var attrs = [];
+      rest.replace(attr, function (match, name) {
+        var value = arguments[2] ? arguments[2] : arguments[3] ? arguments[3] : arguments[4] ? arguments[4] : fillAttrs[name] ? name : '';
+        attrs.push({
+          name: name,
+          value: value,
+          escaped: value.replace(/(^|[^\\])"/g, '$1\\\"') // "
+        });
+
+      });
+
+      if (handler.start) {
+        handler.start(tagName, attrs, unary);
+      }
+    }
+  }
+
+  function parseEndTag(tag, tagName) {
+    // If no tag name is provided, clean shop
+    if (!tagName) {
+      var pos = 0;
+    } // Find the closest opened tag of the same type
+    else {
+        for (var pos = stack.length - 1; pos >= 0; pos--) {
+          if (stack[pos] == tagName) {
+            break;
+          }
+        }
+      }
+
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (var i = stack.length - 1; i >= pos; i--) {
+        if (handler.end) {
+          handler.end(stack[i]);
+        }
+      } // Remove the open elements from the stack
+
+
+      stack.length = pos;
+    }
+  }
+}
+
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+
+  for (var i = 0; i < items.length; i++) {
+    obj[items[i]] = true;
+  }
+
+  return obj;
+}
+
+function removeDOCTYPE(html) {
+  return html.replace(/<\?xml.*\?>\n/, '').replace(/<!doctype.*>\n/, '').replace(/<!DOCTYPE.*>\n/, '');
+}
+
+function parseAttrs(attrs) {
+  return attrs.reduce(function (pre, attr) {
+    var value = attr.value;
+    var name = attr.name;
+
+    if (pre[name]) {
+      pre[name] = pre[name] + " " + value;
+    } else {
+      pre[name] = value;
+    }
+
+    return pre;
+  }, {});
+}
+
+function parseHtml(html) {
+  html = removeDOCTYPE(html);
+  var stacks = [];
+  var results = {
+    node: 'root',
+    children: [] };
+
+  HTMLParser(html, {
+    start: function start(tag, attrs, unary) {
+      var node = {
+        name: tag };
+
+
+      if (attrs.length !== 0) {
+        node.attrs = parseAttrs(attrs);
+      }
+
+      if (unary) {
+        var parent = stacks[0] || results;
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      } else {
+        stacks.unshift(node);
+      }
+    },
+    end: function end(tag) {
+      var node = stacks.shift();
+      if (node.name !== tag) console.error('invalid state: mismatch end tag');
+
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      }
+    },
+    chars: function chars(text) {
+      var node = {
+        type: 'text',
+        text: text };
+
+
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      }
+    },
+    comment: function comment(text) {
+      var node = {
+        node: 'comment',
+        text: text };
+
+      var parent = stacks[0];
+
+      if (!parent.children) {
+        parent.children = [];
+      }
+
+      parent.children.push(node);
+    } });
+
+  return results.children;
+}var _default =
+
+parseHtml;exports.default = _default;
+
+/***/ }),
+/* 29 */
+/*!********************************************************!*\
+  !*** /Users/zuley/zk-work/Simplicity-Letter/api/wx.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = getUserInfo;exports.getOpenId = getOpenId;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function getUserInfo() {return _getUserInfo.apply(this, arguments);}function _getUserInfo() {_getUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
             uni.getStorageSync('userInfo')) {_context.next = 3;break;}_context.next = 3;return (
               wx.getUserProfile({
                 desc: "用于完善会员资料",
@@ -9293,7 +9333,7 @@ if (hadRuntime) {
                 } }));case 3:return _context.abrupt("return",
 
 
-            JSON.parse(uni.getStorageSync('userInfo')));case 4:case "end":return _context.stop();}}}, _callee);}));return _getUserInfo.apply(this, arguments);}function
+            JSON.parse(uni.getStorageSync('userInfo') || "{}"));case 4:case "end":return _context.stop();}}}, _callee);}));return _getUserInfo.apply(this, arguments);}function
 
 
 getOpenId() {return _getOpenId.apply(this, arguments);}function _getOpenId() {_getOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (

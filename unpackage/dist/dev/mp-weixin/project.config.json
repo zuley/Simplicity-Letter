@@ -12,20 +12,23 @@
   "libVersion": "",
   "appid": "wx4c942a369834d965",
   "projectname": "Simplicity-Letter",
-  "cloudfunctionRoot": "static/functions/",
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
+      "current": -1,
       "list": []
     },
     "conversation": {
+      "current": -1,
       "list": []
     },
     "game": {
+      "current": -1,
       "list": []
     },
     "miniprogram": {
+      "current": -1,
       "list": []
     }
-  }
+  },
+  "cloudfunctionRoot": "static/functions/"
 }
