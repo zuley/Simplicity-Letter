@@ -43,6 +43,11 @@
   font-family: "平方黑体,微软黑体";
   color: #666;
 }
+.m-card .zanlist .avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+}
 .m-card .date {
   font-size: 30rpx;
   color: #ddd;

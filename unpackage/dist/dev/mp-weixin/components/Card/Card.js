@@ -136,6 +136,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
 var _htmlParser = _interopRequireDefault(__webpack_require__(/*! ../../common/html-parser.js */ 28));
 var _SimplicityLetter = __webpack_require__(/*! ../../api/SimplicityLetter.js */ 17);
 var _wx = __webpack_require__(/*! ../../api/wx.js */ 29);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
@@ -152,7 +158,9 @@ var _wx = __webpack_require__(/*! ../../api/wx.js */ 29);function _interopRequir
       userInfo: null,
       openId: null,
       zanStatus: false,
-      starStatus: false };
+      starStatus: false,
+      zanList: [],
+      zanTatal: 0 };
 
   },
   computed: {
@@ -180,45 +188,47 @@ var _wx = __webpack_require__(/*! ../../api/wx.js */ 29);function _interopRequir
                 });case 2:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     // 获取赞列表
-    getZanList: function getZanList() {
+    getZanList: function getZanList() {var _this4 = this;
       (0, _SimplicityLetter.getZanList)(this.letter).then(function (res) {
         console.log(res);
+        _this4.zanList = res.list;
+        _this4.zanTatal = res.tatal;
       });
     },
     // 获取赞状态
-    getZanStatus: function getZanStatus() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-                (0, _SimplicityLetter.getZanStatus)(_this4.openId, _this4.letter).then(function (res) {
-                  _this4.zanStatus = res;
+    getZanStatus: function getZanStatus() {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                (0, _SimplicityLetter.getZanStatus)(_this5.openId, _this5.letter).then(function (res) {
+                  _this5.zanStatus = res;
                 });case 1:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     // 点击收藏
-    handleStar: function handleStar() {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
-                  _this5.initData());case 2:
-                _this5.starStatus = true;
-                (0, _SimplicityLetter.setStar)(_this5.letter, _this5.userInfo.nickName, _this5.openId).catch(function (err) {
-                  _this5.starStatus = false;
+    handleStar: function handleStar() {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
+                  _this6.initData());case 2:
+                _this6.starStatus = true;
+                (0, _SimplicityLetter.setStar)(_this6.letter, _this6.userInfo.nickName, _this6.openId).catch(function (err) {
+                  _this6.starStatus = false;
                 });case 4:case "end":return _context5.stop();}}}, _callee5);}))();
     },
     // 取消收藏
-    handleCancelStar: function handleCancelStar() {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6() {return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
-                _this6.starStatus = false;
-                (0, _SimplicityLetter.cancelStar)(_this6.openId, _this6.letter).catch(function (err) {
-                  _this6.starStatus = true;
+    handleCancelStar: function handleCancelStar() {var _this7 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6() {return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
+                _this7.starStatus = false;
+                (0, _SimplicityLetter.cancelStar)(_this7.openId, _this7.letter).catch(function (err) {
+                  _this7.starStatus = true;
                 });case 2:case "end":return _context6.stop();}}}, _callee6);}))();
     },
     // 获取收藏状态
-    getStarStatus: function getStarStatus() {var _this7 = this;
+    getStarStatus: function getStarStatus() {var _this8 = this;
       (0, _SimplicityLetter.getStarStatus)(this.openId, this.letter).then(function (res) {
-        _this7.starStatus = true;
+        _this8.starStatus = true;
       });
     },
     handleShare: function handleShare() {
       console.log("分享");
     },
     // 初始化数据
-    initData: function initData() {var _this8 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7() {return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:if (!
-                _this8.userInfo) {_context7.next = 2;break;}return _context7.abrupt("return");case 2:_context7.next = 4;return (
-                  (0, _wx.getUserInfo)());case 4:_this8.userInfo = _context7.sent;case 5:case "end":return _context7.stop();}}}, _callee7);}))();
+    initData: function initData() {var _this9 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7() {return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:if (!
+                _this9.userInfo) {_context7.next = 2;break;}return _context7.abrupt("return");case 2:_context7.next = 4;return (
+                  (0, _wx.getUserInfo)());case 4:_this9.userInfo = _context7.sent;case 5:case "end":return _context7.stop();}}}, _callee7);}))();
     } } };exports.default = _default;
 
 /***/ }),

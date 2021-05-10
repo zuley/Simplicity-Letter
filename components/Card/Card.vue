@@ -5,6 +5,12 @@
 		<view class="box">
 			<rich-text class="format" :nodes="htmlNode"></rich-text>
 		</view>
+		<view class="zanlist">
+			<view class="box">
+				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
+			</view>
+			<view class="nums">{{ zanTatal }}人觉得很赞</view>
+		</view>
 		<view class="date">{{ date }}</view>
 		<view class="tools">
 			<!-- 点赞 -->
@@ -36,7 +42,9 @@
 				userInfo: null,
 				openId: null,
 				zanStatus: false,
-				starStatus: false
+				starStatus: false,
+				zanList: [],
+				zanTatal: 0
 			};
 		},
 		computed: {
@@ -67,6 +75,8 @@
 			getZanList () {
 				getZanList(this.letter).then(res => {
 					console.log(res)
+					this.zanList = res.list
+					this.zanTatal = res.tatal
 				})
 			},
 			// 获取赞状态
@@ -126,6 +136,13 @@
 		line-height: 1.8;
 		font-family: "平方黑体,微软黑体";
 		color: #666;
+	}
+	.zanlist {
+		.avatar {
+			width: 40rpx;
+			height: 40rpx;
+			border-radius: 100%;
+		}
 	}
 	.date {
 		font-size: 30rpx;
