@@ -1,15 +1,16 @@
 <template>
 	<view class="m-card">
 		<image class="pic" :src="pic" mode="aspectFill"></image>
-		<!-- <view class="decorate"></view> -->
 		<view class="box">
 			<rich-text class="format" :nodes="htmlNode"></rich-text>
 		</view>
 		<view class="zanlist">
 			<view class="box">
 				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
+				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
+				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
 			</view>
-			<view class="nums">{{ zanTatal }}人觉得很赞</view>
+			<view class="nums" v-if="zanTatal > 0">{{ zanTatal }}人觉得很赞</view>
 		</view>
 		<view class="date">{{ date }}</view>
 		<view class="tools">
@@ -128,7 +129,7 @@
 		width: 750rpx;
 		height: 750rpx;
 	}
-	.box {
+	>.box {
 		padding: 20rpx 40rpx;
 	}
 	.format {
@@ -138,10 +139,35 @@
 		color: #666;
 	}
 	.zanlist {
+		display: flex;
+		line-height: 40rpx;
+		height: 40rpx;
+		position: absolute;
+		bottom: 30rpx;
+		left: 30rpx;
+		.box {
+			margin-right: 20rpx;
+		}
 		.avatar {
 			width: 40rpx;
 			height: 40rpx;
 			border-radius: 100%;
+			position: relative;
+			z-index: 10;
+			&+.avatar {
+				margin-left: -20rpx;
+				box-shadow: 0 0 5rpx rgba($color: #000000, $alpha: .2);
+			}
+			&:nth-child(2) { z-index: 9; opacity: .8; }
+			&:nth-child(3) { z-index: 8; opacity: .7; }
+			&:nth-child(4) { z-index: 7; opacity: .6; }
+			&:nth-child(5) { z-index: 6; opacity: .5; }
+			&:nth-child(6) { z-index: 5; opacity: .4; }
+			&:nth-child(7) { z-index: 4; opacity: .3; }
+		}
+		.nums {
+			font-size: 25rpx;
+			color: #999;
 		}
 	}
 	.date {
@@ -150,6 +176,7 @@
 		position: absolute;
 		bottom: 30rpx;
 		left: 40rpx;
+		display: none;
 	}
 	.tools {
 		position: absolute;

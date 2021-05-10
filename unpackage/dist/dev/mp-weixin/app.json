@@ -10,5 +10,6 @@
     "backgroundColor": "#F8F8F8",
     "transparentTitle": "always"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap90.json"
 }

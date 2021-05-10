@@ -34,7 +34,7 @@
   width: 750rpx;
   height: 750rpx;
 }
-.m-card .box {
+.m-card > .box {
   padding: 20rpx 40rpx;
 }
 .m-card .format {
@@ -43,10 +43,57 @@
   font-family: "平方黑体,微软黑体";
   color: #666;
 }
+.m-card .zanlist {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  line-height: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+}
+.m-card .zanlist .box {
+  margin-right: 20rpx;
+}
 .m-card .zanlist .avatar {
   width: 40rpx;
   height: 40rpx;
   border-radius: 100%;
+  position: relative;
+  z-index: 10;
+}
+.m-card .zanlist .avatar + .avatar {
+  margin-left: -20rpx;
+  box-shadow: 0 0 5rpx rgba(0, 0, 0, 0.2);
+}
+.m-card .zanlist .avatar:nth-child(2) {
+  z-index: 9;
+  opacity: .8;
+}
+.m-card .zanlist .avatar:nth-child(3) {
+  z-index: 8;
+  opacity: .7;
+}
+.m-card .zanlist .avatar:nth-child(4) {
+  z-index: 7;
+  opacity: .6;
+}
+.m-card .zanlist .avatar:nth-child(5) {
+  z-index: 6;
+  opacity: .5;
+}
+.m-card .zanlist .avatar:nth-child(6) {
+  z-index: 5;
+  opacity: .4;
+}
+.m-card .zanlist .avatar:nth-child(7) {
+  z-index: 4;
+  opacity: .3;
+}
+.m-card .zanlist .nums {
+  font-size: 25rpx;
+  color: #999;
 }
 .m-card .date {
   font-size: 30rpx;
@@ -54,6 +101,7 @@
   position: absolute;
   bottom: 30rpx;
   left: 40rpx;
+  display: none;
 }
 .m-card .tools {
   position: absolute;
