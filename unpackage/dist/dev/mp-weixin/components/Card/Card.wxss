@@ -115,4 +115,7 @@
   float: left;
   margin-left: 10rpx;
 }
+.m-card .tools .icon {
+  float: left;
+}
 

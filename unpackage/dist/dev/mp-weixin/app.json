@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/user/user"
   ],
   "subPackages": [],
   "window": {
@@ -11,5 +12,5 @@
     "transparentTitle": "always"
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap90.json"
+  "sitemapLocation": "sitemap0.json"
 }

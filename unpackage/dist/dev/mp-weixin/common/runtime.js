@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/Card/Card":1};
+/******/ 		var cssChunks = {"components/Card/Card":1,"components/wyb-loading/wyb-loading":1,"components/wyb-popup/wyb-popup":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/Card/Card":"components/Card/Card"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/Card/Card":"components/Card/Card","components/wyb-loading/wyb-loading":"components/wyb-loading/wyb-loading","components/wyb-popup/wyb-popup":"components/wyb-popup/wyb-popup"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

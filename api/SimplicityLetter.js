@@ -1,3 +1,5 @@
+import { getOpenId } from "./wx.js"
+
 const db = wx.cloud.database()
 const SimplicityLetter = db.collection("simplicity-letter")
 const SimplicityLetterZan = db.collection("simplicity-letter-zan")
@@ -110,4 +112,41 @@ export async function setStar (letter, nickName, openId) {
 			_createTime: new Date().getTime()
 		}
 	})
+}
+
+/**
+ * 获取用户点赞数
+ * @param {Object} openId 用户标识
+ */
+export async function getUserZansCount (openId) {
+	return SimplicityLetterZan.where({
+		_openid: openId
+	}).count()
+}
+
+/**
+ * 获取用户点赞列表
+ * @param {Object} openId 用户表示
+ */
+export async function getUserZansList (openId) {
+	return await wx.cloud.callFunction({
+		name: "getUserZans",
+		data: {
+			openId
+		}
+	}).then(res => {
+		return {
+			data: res.result
+		}
+	})
+}
+
+/**
+ * 获取用户收藏数
+ * @param {Object} openId 用户标识
+ */
+export async function getUserStarsCount (openId) {
+	return SimplicityLetterStar.where({
+		_openid: openId
+	}).count()
 }

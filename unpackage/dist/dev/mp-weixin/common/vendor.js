@@ -8103,7 +8103,9 @@ function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;exports.getStarStatus = getStarStatus;exports.cancelStar = cancelStar;exports.setStar = setStar;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var db = wx.cloud.database();
+Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;exports.getStarStatus = getStarStatus;exports.cancelStar = cancelStar;exports.setStar = setStar;exports.getUserZansCount = getUserZansCount;exports.getUserZansList = getUserZansList;exports.getUserStarsCount = getUserStarsCount;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));var _wx = __webpack_require__(/*! ./wx.js */ 21);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+
+var db = wx.cloud.database();
 var SimplicityLetter = db.collection("simplicity-letter");
 var SimplicityLetterZan = db.collection("simplicity-letter-zan");
 var SimplicityLetterStar = db.collection("simplicity-letter-star");
@@ -8206,13 +8208,52 @@ cancelStar(_x12, _x13) {return _cancelStar.apply(this, arguments);}
                                                                      * @param {String} letter 情书ID
                                                                      * @param {String} nickName 用户昵称
                                                                      */function _cancelStar() {_cancelStar = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(openId, letter) {return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:return _context6.abrupt("return", SimplicityLetterStar.where({ _openid: openId, letter: letter }).remove());case 1:case "end":return _context6.stop();}}}, _callee6);}));return _cancelStar.apply(this, arguments);}function
-setStar(_x14, _x15, _x16) {return _setStar.apply(this, arguments);}function _setStar() {_setStar = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(letter, nickName, openId) {return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_context7.next = 2;return (
-              getStarStatus(openId, letter));case 2:if (!_context7.sent) {_context7.next = 4;break;}return _context7.abrupt("return", true);case 4:return _context7.abrupt("return",
-            SimplicityLetterStar.add({
-              data: {
-                letter: letter,
-                nickName: nickName,
-                _createTime: new Date().getTime() } }));case 5:case "end":return _context7.stop();}}}, _callee7);}));return _setStar.apply(this, arguments);}
+setStar(_x14, _x15, _x16) {return _setStar.apply(this, arguments);}
+
+
+
+
+
+
+
+
+
+
+/**
+                                                                     * 获取用户点赞数
+                                                                     * @param {Object} openId 用户标识
+                                                                     */function _setStar() {_setStar = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee7(letter, nickName, openId) {return _regenerator.default.wrap(function _callee7$(_context7) {while (1) {switch (_context7.prev = _context7.next) {case 0:_context7.next = 2;return getStarStatus(openId, letter);case 2:if (!_context7.sent) {_context7.next = 4;break;}return _context7.abrupt("return", true);case 4:return _context7.abrupt("return", SimplicityLetterStar.add({ data: { letter: letter, nickName: nickName, _createTime: new Date().getTime() } }));case 5:case "end":return _context7.stop();}}}, _callee7);}));return _setStar.apply(this, arguments);}function
+getUserZansCount(_x17) {return _getUserZansCount.apply(this, arguments);}
+
+
+
+
+
+/**
+                                                                           * 获取用户点赞列表
+                                                                           * @param {Object} openId 用户表示
+                                                                           */function _getUserZansCount() {_getUserZansCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee8(openId) {return _regenerator.default.wrap(function _callee8$(_context8) {while (1) {switch (_context8.prev = _context8.next) {case 0:return _context8.abrupt("return", SimplicityLetterZan.where({ _openid: openId }).count());case 1:case "end":return _context8.stop();}}}, _callee8);}));return _getUserZansCount.apply(this, arguments);}function
+getUserZansList(_x18) {return _getUserZansList.apply(this, arguments);}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+                                                                         * 获取用户收藏数
+                                                                         * @param {Object} openId 用户标识
+                                                                         */function _getUserZansList() {_getUserZansList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee9(openId) {return _regenerator.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:_context9.next = 2;return wx.cloud.callFunction({ name: "getUserZans", data: { openId: openId } }).then(function (res) {return { data: res.result };});case 2:return _context9.abrupt("return", _context9.sent);case 3:case "end":return _context9.stop();}}}, _callee9);}));return _getUserZansList.apply(this, arguments);}function
+getUserStarsCount(_x19) {return _getUserStarsCount.apply(this, arguments);}function _getUserStarsCount() {_getUserStarsCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee10(openId) {return _regenerator.default.wrap(function _callee10$(_context10) {while (1) {switch (_context10.prev = _context10.next) {case 0:return _context10.abrupt("return",
+            SimplicityLetterStar.where({
+              _openid: openId }).
+            count());case 1:case "end":return _context10.stop();}}}, _callee10);}));return _getUserStarsCount.apply(this, arguments);}
 
 /***/ }),
 /* 18 */
@@ -9003,14 +9044,54 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 21 */,
+/* 21 */
+/*!********************************************************!*\
+  !*** /Users/zuley/zk-work/Simplicity-Letter/api/wx.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = getUserInfo;exports.getOpenId = getOpenId;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function getUserInfo() {return _getUserInfo.apply(this, arguments);}function _getUserInfo() {_getUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+            uni.getStorageSync('userInfo')) {_context.next = 3;break;}_context.next = 3;return (
+              wx.getUserProfile({
+                desc: "用于完善会员资料",
+                success: function success(res) {
+                  uni.setStorageSync('userInfo', JSON.stringify(res.userInfo));
+                } }));case 3:return _context.abrupt("return",
+
+
+            JSON.parse(uni.getStorageSync('userInfo') || "{}"));case 4:case "end":return _context.stop();}}}, _callee);}));return _getUserInfo.apply(this, arguments);}function
+
+
+getOpenId() {return _getOpenId.apply(this, arguments);}function _getOpenId() {_getOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (
+            uni.getStorageSync('openId')) {_context2.next = 3;break;}_context2.next = 3;return (
+              wx.cloud.callFunction({
+                name: "getOpenid" }).
+              then(function (res) {
+                uni.setStorageSync('openId', res.result.openId);
+              }));case 3:return _context2.abrupt("return",
+
+            uni.getStorageSync('openId'));case 4:case "end":return _context2.stop();}}}, _callee2);}));return _getOpenId.apply(this, arguments);}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
 /* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
 /* 26 */,
 /* 27 */,
-/* 28 */
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
 /*!********************************************************************!*\
   !*** /Users/zuley/zk-work/Simplicity-Letter/common/html-parser.js ***!
   \********************************************************************/
@@ -9314,38 +9395,6 @@ function parseHtml(html) {
 }var _default =
 
 parseHtml;exports.default = _default;
-
-/***/ }),
-/* 29 */
-/*!********************************************************!*\
-  !*** /Users/zuley/zk-work/Simplicity-Letter/api/wx.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = getUserInfo;exports.getOpenId = getOpenId;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function getUserInfo() {return _getUserInfo.apply(this, arguments);}function _getUserInfo() {_getUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
-            uni.getStorageSync('userInfo')) {_context.next = 3;break;}_context.next = 3;return (
-              wx.getUserProfile({
-                desc: "用于完善会员资料",
-                success: function success(res) {
-                  uni.setStorageSync('userInfo', JSON.stringify(res.userInfo));
-                } }));case 3:return _context.abrupt("return",
-
-
-            JSON.parse(uni.getStorageSync('userInfo') || "{}"));case 4:case "end":return _context.stop();}}}, _callee);}));return _getUserInfo.apply(this, arguments);}function
-
-
-getOpenId() {return _getOpenId.apply(this, arguments);}function _getOpenId() {_getOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (
-            uni.getStorageSync('openId')) {_context2.next = 3;break;}_context2.next = 3;return (
-              wx.cloud.callFunction({
-                name: "getOpenid" }).
-              then(function (res) {
-                uni.setStorageSync('openId', res.result.openId);
-              }));case 3:return _context2.abrupt("return",
-
-            uni.getStorageSync('openId'));case 4:case "end":return _context2.stop();}}}, _callee2);}));return _getOpenId.apply(this, arguments);}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 ]]);

@@ -7,8 +7,6 @@
 		<view class="zanlist">
 			<view class="box">
 				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
-				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
-				<image class="avatar" v-for="item in zanList" :src="item.avatarUrl"></image>
 			</view>
 			<view class="nums" v-if="zanTatal > 0">{{ zanTatal }}人觉得很赞</view>
 		</view>
@@ -21,7 +19,11 @@
 			<view v-if="!starStatus" class="iconfont" @tap="handleStar">&#xe870;</view>
 			<view v-else class="iconfont" @tap="handleCancelStar">&#xe86f;</view>
 			<!-- 分享 -->
-			<view class="iconfont" @tap="handleShare">&#xe6eb;</view>
+			<!-- <view class="iconfont" @tap="handleShare">&#xe6eb;</view> -->
+			<!-- 用户中心 -->
+			<navigator class="icon" url="../../pages/user/user">
+				<view class="iconfont">&#xe916;</view>
+			</navigator>
 		</view>
 	</view>
 </template>
@@ -59,23 +61,28 @@
 			this.getZanStatus()
 		},
 		methods: {
+			// 点赞
 			async handleZan () {
 				await this.initData()
 				this.zanStatus = true
-				setZan(this.letter, this.userInfo.avatarUrl, this.userInfo.nickName, this.openId).catch(err => {
+				setZan(this.letter, this.userInfo.avatarUrl, this.userInfo.nickName, this.openId).then(res => {
+					this.getZanList()
+				}).catch(err => {
 					this.zanStatus = false
 				})
 			},
+			// 取消赞
 			async handleCancelZan  () {
 				this.zanStatus = false
-				cancelZan(this.openId, this.letter).catch(err => {
+				cancelZan(this.openId, this.letter).then(res => {
+					this.getZanList()
+				}).catch(err => {
 					this.zanStatus = true
 				})
 			},
 			// 获取赞列表
 			getZanList () {
 				getZanList(this.letter).then(res => {
-					console.log(res)
 					this.zanList = res.list
 					this.zanTatal = res.tatal
 				})
@@ -108,7 +115,10 @@
 				})
 			},
 			handleShare () {
-				console.log("分享")
+				uni.showToast({
+					title: "敬请期待",
+					icon: "none"
+				})
 			},
 			// 初始化数据
 			async initData () {
@@ -188,6 +198,9 @@
 			color: #999;
 			float: left;
 			margin-left: 10rpx;
+		}
+		.icon {
+			float: left;
 		}
 	}
 }

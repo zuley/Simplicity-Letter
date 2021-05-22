@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "三行情书",
   "usingComponents": {
-    "card": "/components/Card/Card"
+    "card": "/components/Card/Card",
+    "wyb-loading": "/components/wyb-loading/wyb-loading"
   }
 }

@@ -12,24 +12,36 @@
 				/>
 			</swiper-item>
 		</swiper>
+		<wyb-loading ref="loading"/>
 	</view>
 </template>
 
 <script>
-	import { getLetterList } from "../../api/SimplicityLetter.js"
+	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
+	import { getLetterList, getUserZansList } from "../../api/SimplicityLetter.js"
+	const loadFun = {
+		'home': getLetterList,
+		'zan': getUserZansList
+	}
 	export default {
+		components: {
+			wybLoading
+		},
 		data() {
 			return {
 				list: [],
 			}
 		},
-		onLoad() {
-			this.loadLists()
+		onLoad(params) {
+			this.loadLists(params.type)
 		},
 		methods: {
-			loadLists () {
-				getLetterList().then(res => {
+			loadLists (type = "home") {
+				this.$refs.loading.showLoading()
+				loadFun[type]().then(res => {
 					this.list.push(...res.data)
+				}).finally(() => {
+					this.$refs.loading.hideLoading()
 				})
 			}
 		}
