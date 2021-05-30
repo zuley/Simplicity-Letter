@@ -1,6 +1,10 @@
 <template>
 	<view class="m-card">
-		<image class="pic" :src="pic" mode="aspectFill"></image>
+		<image v-if="aspectFill" class="pic" :src="pic" mode="aspectFill"></image>
+		<view v-else class="pic">
+			<view class="y">{{ dateFormat.y }}年 {{ dateFormat.m }}月</view>
+			<view class="d">{{ dateFormat.d }}</view>
+		</view>
 		<view class="box">
 			<rich-text class="format" :nodes="htmlNode"></rich-text>
 		</view>
@@ -53,6 +57,14 @@
 		computed: {
 			htmlNode () {
 				return htmlParser(this.content)
+			},
+			dateFormat () {
+				const arr = this.date.split('-')
+				return {
+					y: arr[0],
+					m: arr[1],
+					d: arr[2]
+				}
 			}
 		},
 		async created () {
@@ -138,6 +150,26 @@
 	.pic {
 		width: 750rpx;
 		height: 750rpx;
+		background: #fff;
+		position: relative;
+		.d {
+			position: absolute;
+			width: 100%;
+			top: 0;
+			font-size: 300rpx;
+			color: #666;
+			text-align: center;
+			height: 100%;
+			line-height: 600rpx;
+		}
+		.y {
+			position: absolute;
+			width: 100%;
+			top: 500rpx;
+			text-align: center;
+			font-size: 40rpx;
+			color: #999;
+		}
 	}
 	>.box {
 		padding: 20rpx 40rpx;
@@ -197,7 +229,7 @@
 			font-size: 50rpx;
 			color: #999;
 			float: left;
-			margin-left: 10rpx;
+			margin-left: 20rpx;
 		}
 		.icon {
 			float: left;

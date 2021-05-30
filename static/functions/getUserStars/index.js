@@ -1,21 +1,14 @@
-/*
- * @Author: zuley
- * @Date: 2021-05-02 21:24:46
- * @LastEditors: zuley
- * @LastEditTime: 2021-05-12 19:56:27
- */
 const cloud = require('wx-server-sdk')
 cloud.init({
   env: "love-letter-5gc2te6l55839c5b"
 })
 
 const db = cloud.database()
-const SimplicityLetterZan = db.collection("simplicity-letter-zan")
+const SimplicityLetterStar = db.collection("simplicity-letter-star")
 
 
 exports.main = async (event, context) => {
-	console.log((event.page - 1) * event.size)
-	const res = await SimplicityLetterZan.aggregate().match({
+	const res = await SimplicityLetterStar.aggregate().match({
 		_openid: event.openId
 	}).sort({
 		_createTime: -1

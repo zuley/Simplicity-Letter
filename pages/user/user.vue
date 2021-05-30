@@ -51,9 +51,9 @@
 				})
 			},
 			toUserStar () {
-				// uni.navigateTo({
-				// 	url: "../index/index?type=star",
-				// })
+				uni.navigateTo({
+					url: "../index/index?type=star",
+				})
 			}
 		}
 	}
@@ -62,15 +62,21 @@
 <style lang="scss">
 .p-user {
 	.m-header {
-		padding: 40rpx;
+		padding: 80rpx 40rpx;
 		background-color: #f8f8f8;
 		border-radius: 10rpx;
 		display: flex;
 		align-items: center;
 		.avatar {
-			width: 80rpx;
-			height: 80rpx;
-			margin-right: 10rpx;
+			width: 120rpx;
+			height: 120rpx;
+			border-radius: 100%;
+			margin-right: 40rpx;
+			overflow: hidden;
+		}
+		.name {
+			color: #333;
+			font-size: 40rpx;
 		}
 		.msg {
 			padding: 0 10rpx;
@@ -87,16 +93,17 @@
 	>.list {
 		>.item {
 			padding: 0 40rpx;
-			border-bottom: 1px solid #eee;
-			line-height: 80rpx;
+			border-bottom: 1px solid #f8f8f8;
+			line-height: 120rpx;
 			display: flex;
 			.title {
 				color: #666;
+				font-size: 36rpx;
 			}
 			.nums {
 				color: #999;
 				margin-left: 30rpx;
-				font-size: 20rpx;
+				font-size: 30rpx;
 				position: relative;
 				top: 2rpx;
 				flex: 1;

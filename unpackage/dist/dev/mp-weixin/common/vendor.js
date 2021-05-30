@@ -822,7 +822,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7395,7 +7395,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7416,14 +7416,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7509,7 +7509,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"Simplicity-Letter","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7947,9 +7947,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!*********************************************************!*\
-  !*** /Users/zuley/zk-work/Simplicity-Letter/pages.json ***!
-  \*********************************************************/
+/*!*************************************************!*\
+  !*** D:/work_code/Simplicity-Letter/pages.json ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8096,14 +8096,14 @@ function normalizeComponent (
 /* 15 */,
 /* 16 */,
 /* 17 */
-/*!**********************************************************************!*\
-  !*** /Users/zuley/zk-work/Simplicity-Letter/api/SimplicityLetter.js ***!
-  \**********************************************************************/
+/*!**************************************************************!*\
+  !*** D:/work_code/Simplicity-Letter/api/SimplicityLetter.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;exports.getStarStatus = getStarStatus;exports.cancelStar = cancelStar;exports.setStar = setStar;exports.getUserZansCount = getUserZansCount;exports.getUserZansList = getUserZansList;exports.getUserStarsCount = getUserStarsCount;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));var _wx = __webpack_require__(/*! ./wx.js */ 21);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getLetterList = getLetterList;exports.setZan = setZan;exports.getZanList = getZanList;exports.getZanStatus = getZanStatus;exports.cancelZan = cancelZan;exports.getStarStatus = getStarStatus;exports.cancelStar = cancelStar;exports.setStar = setStar;exports.getUserZansCount = getUserZansCount;exports.getUserZansList = getUserZansList;exports.getUserStarsCount = getUserStarsCount;exports.getUserStarsList = getUserStarsList;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));var _wx = __webpack_require__(/*! ./wx.js */ 21);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 
 var db = wx.cloud.database();
 var SimplicityLetter = db.collection("simplicity-letter");
@@ -8111,10 +8111,10 @@ var SimplicityLetterZan = db.collection("simplicity-letter-zan");
 var SimplicityLetterStar = db.collection("simplicity-letter-star");
 
 // 获取情书列表
-function getLetterList() {
+function getLetterList() {var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},_ref$page = _ref.page,page = _ref$page === void 0 ? 1 : _ref$page,_ref$size = _ref.size,size = _ref$size === void 0 ? 10 : _ref$size;
   return SimplicityLetter.where({
     status: "1" }).
-  get();
+  orderBy('date', 'desc').limit(size).skip((page - 1) * size).get();
 }
 
 /**
@@ -8233,7 +8233,9 @@ getUserZansCount(_x17) {return _getUserZansCount.apply(this, arguments);}
                                                                            * 获取用户点赞列表
                                                                            * @param {Object} openId 用户表示
                                                                            */function _getUserZansCount() {_getUserZansCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee8(openId) {return _regenerator.default.wrap(function _callee8$(_context8) {while (1) {switch (_context8.prev = _context8.next) {case 0:return _context8.abrupt("return", SimplicityLetterZan.where({ _openid: openId }).count());case 1:case "end":return _context8.stop();}}}, _callee8);}));return _getUserZansCount.apply(this, arguments);}function
-getUserZansList(_x18) {return _getUserZansList.apply(this, arguments);}
+getUserZansList() {return _getUserZansList.apply(this, arguments);}
+
+
 
 
 
@@ -8247,13 +8249,32 @@ getUserZansList(_x18) {return _getUserZansList.apply(this, arguments);}
 
 
 /**
-                                                                         * 获取用户收藏数
-                                                                         * @param {Object} openId 用户标识
-                                                                         */function _getUserZansList() {_getUserZansList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee9(openId) {return _regenerator.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:_context9.next = 2;return wx.cloud.callFunction({ name: "getUserZans", data: { openId: openId } }).then(function (res) {return { data: res.result };});case 2:return _context9.abrupt("return", _context9.sent);case 3:case "end":return _context9.stop();}}}, _callee9);}));return _getUserZansList.apply(this, arguments);}function
-getUserStarsCount(_x19) {return _getUserStarsCount.apply(this, arguments);}function _getUserStarsCount() {_getUserStarsCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee10(openId) {return _regenerator.default.wrap(function _callee10$(_context10) {while (1) {switch (_context10.prev = _context10.next) {case 0:return _context10.abrupt("return",
-            SimplicityLetterStar.where({
-              _openid: openId }).
-            count());case 1:case "end":return _context10.stop();}}}, _callee10);}));return _getUserStarsCount.apply(this, arguments);}
+                                                                     * 获取用户收藏数
+                                                                     * @param {Object} openId 用户标识
+                                                                     */function _getUserZansList() {_getUserZansList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee9() {var _ref2,_ref2$page,page,_ref2$size,size,openId,_args9 = arguments;return _regenerator.default.wrap(function _callee9$(_context9) {while (1) {switch (_context9.prev = _context9.next) {case 0:_ref2 = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : {}, _ref2$page = _ref2.page, page = _ref2$page === void 0 ? 1 : _ref2$page, _ref2$size = _ref2.size, size = _ref2$size === void 0 ? 10 : _ref2$size;openId = _args9.length > 1 ? _args9[1] : undefined;_context9.next = 4;return wx.cloud.callFunction({ name: "getUserZans", data: { openId: openId, page: page, size: size } }).then(function (res) {return { data: res.result };});case 4:return _context9.abrupt("return", _context9.sent);case 5:case "end":return _context9.stop();}}}, _callee9);}));return _getUserZansList.apply(this, arguments);}function
+getUserStarsCount(_x18) {return _getUserStarsCount.apply(this, arguments);}
+
+
+
+
+
+/**
+                                                                             * 获取用户收藏列表
+                                                                             * @param {Object} openId 用户表示
+                                                                             */function _getUserStarsCount() {_getUserStarsCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee10(openId) {return _regenerator.default.wrap(function _callee10$(_context10) {while (1) {switch (_context10.prev = _context10.next) {case 0:return _context10.abrupt("return", SimplicityLetterStar.where({ _openid: openId }).count());case 1:case "end":return _context10.stop();}}}, _callee10);}));return _getUserStarsCount.apply(this, arguments);}function
+getUserStarsList() {return _getUserStarsList.apply(this, arguments);}function _getUserStarsList() {_getUserStarsList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee11() {var _ref3,_ref3$page,page,_ref3$size,size,openId,_args11 = arguments;return _regenerator.default.wrap(function _callee11$(_context11) {while (1) {switch (_context11.prev = _context11.next) {case 0:_ref3 = _args11.length > 0 && _args11[0] !== undefined ? _args11[0] : {}, _ref3$page = _ref3.page, page = _ref3$page === void 0 ? 1 : _ref3$page, _ref3$size = _ref3.size, size = _ref3$size === void 0 ? 10 : _ref3$size;openId = _args11.length > 1 ? _args11[1] : undefined;_context11.next = 4;return (
+              wx.cloud.callFunction({
+                name: "getUserStars",
+                data: {
+                  openId: openId,
+                  page: page,
+                  size: size } }).
+
+              then(function (res) {
+                return {
+                  data: res.result };
+
+              }));case 4:return _context11.abrupt("return", _context11.sent);case 5:case "end":return _context11.stop();}}}, _callee11);}));return _getUserStarsList.apply(this, arguments);}
 
 /***/ }),
 /* 18 */
@@ -9045,9 +9066,9 @@ if (hadRuntime) {
 
 /***/ }),
 /* 21 */
-/*!********************************************************!*\
-  !*** /Users/zuley/zk-work/Simplicity-Letter/api/wx.js ***!
-  \********************************************************/
+/*!************************************************!*\
+  !*** D:/work_code/Simplicity-Letter/api/wx.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9092,9 +9113,9 @@ getOpenId() {return _getOpenId.apply(this, arguments);}function _getOpenId() {_g
 /* 35 */,
 /* 36 */,
 /* 37 */
-/*!********************************************************************!*\
-  !*** /Users/zuley/zk-work/Simplicity-Letter/common/html-parser.js ***!
-  \********************************************************************/
+/*!************************************************************!*\
+  !*** D:/work_code/Simplicity-Letter/common/html-parser.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

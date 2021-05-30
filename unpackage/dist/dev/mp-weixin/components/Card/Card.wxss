@@ -33,6 +33,26 @@
 .m-card .pic {
   width: 750rpx;
   height: 750rpx;
+  background: #fff;
+  position: relative;
+}
+.m-card .pic .d {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  font-size: 300rpx;
+  color: #666;
+  text-align: center;
+  height: 100%;
+  line-height: 600rpx;
+}
+.m-card .pic .y {
+  position: absolute;
+  width: 100%;
+  top: 500rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #999;
 }
 .m-card > .box {
   padding: 20rpx 40rpx;
@@ -113,7 +133,7 @@
   font-size: 50rpx;
   color: #999;
   float: left;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
 }
 .m-card .tools .icon {
   float: left;

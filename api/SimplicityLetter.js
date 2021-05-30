@@ -6,10 +6,10 @@ const SimplicityLetterZan = db.collection("simplicity-letter-zan")
 const SimplicityLetterStar = db.collection("simplicity-letter-star")
 
 // 获取情书列表
-export function getLetterList () {
+export function getLetterList ({ page = 1, size = 10 } = {}) {
 	return SimplicityLetter.where({
 		status: "1"
-	}).get()
+	}).orderBy('date', 'desc').limit(size).skip((page - 1) * size).get()
 }
 
 /**
@@ -128,11 +128,13 @@ export async function getUserZansCount (openId) {
  * 获取用户点赞列表
  * @param {Object} openId 用户表示
  */
-export async function getUserZansList (openId) {
+export async function getUserZansList ({ page = 1, size = 10 } = {}, openId) {
 	return await wx.cloud.callFunction({
 		name: "getUserZans",
 		data: {
-			openId
+			openId,
+			page,
+			size
 		}
 	}).then(res => {
 		return {
@@ -149,4 +151,23 @@ export async function getUserStarsCount (openId) {
 	return SimplicityLetterStar.where({
 		_openid: openId
 	}).count()
+}
+
+/**
+ * 获取用户收藏列表
+ * @param {Object} openId 用户表示
+ */
+export async function getUserStarsList ({ page = 1, size = 10 } = {}, openId) {
+	return await wx.cloud.callFunction({
+		name: "getUserStars",
+		data: {
+			openId,
+			page,
+			size
+		}
+	}).then(res => {
+		return {
+			data: res.result
+		}
+	})
 }
