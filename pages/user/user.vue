@@ -4,7 +4,7 @@
 			<open-data class="avatar" type="userAvatarUrl"></open-data>
 			<open-data class="name" type="userNickName"></open-data>
 			<!-- <view class="num">{{ msgNum }}次</view> -->
-			<!-- <view class="msg" @tap="handleSubscription">订阅+1</view> -->
+			<view class="msg" @tap="handleSubscription">订阅+1</view>
 		</view>
 		<view class="list">
 			<view class="item" @tap="toUserZan">
@@ -40,9 +40,11 @@
 		},
 		methods: {
 			handleSubscription () {
-				uni.showToast({
-					title: "敬请期待",
-					icon: "none",
+				wx.requestSubscribeMessage({
+				  tmplIds: ['tQ1G1K-ur5lCeVZaOkXx-xVW83hJhAC3f6MngUCoiVg'],
+				  success (res) {
+						console.log(res)
+					}
 				})
 			},
 			toUserZan () {

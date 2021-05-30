@@ -1,6 +1,6 @@
 <template>
 	<view class="m-card">
-		<image v-if="aspectFill" class="pic" :src="pic" mode="aspectFill"></image>
+		<image v-if="pic" class="pic" :src="pic" mode="aspectFill"></image>
 		<view v-else class="pic">
 			<view class="y">{{ dateFormat.y }}年 {{ dateFormat.m }}月</view>
 			<view class="d">{{ dateFormat.d }}</view>
